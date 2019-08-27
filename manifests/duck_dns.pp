@@ -8,7 +8,7 @@ class profiles::duck_dns {
   }
 
   cron::job { 'updatedns':
-    minute      => '/5',
+    minute      => '*',
     hour        => '*',
     date        => '*',
     month       => '*',
