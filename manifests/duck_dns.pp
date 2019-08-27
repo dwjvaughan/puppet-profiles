@@ -7,4 +7,15 @@ class profiles::duck_dns {
     mode   => '0755'
   }
 
+  cron::job { 'updatedns':
+    minute      => '/5',
+    hour        => '*',
+    date        => '*',
+    month       => '*',
+    weekday     => '*',
+    user        => 'root',
+    command     => '/usr/local/bin/duck',
+    description => 'Update Duck DNS',
+  }
+
 }
