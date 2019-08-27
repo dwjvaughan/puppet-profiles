@@ -8,13 +8,13 @@ class profiles::duck_dns {
   }
 
   cron::job { 'updatedns':
-    minute      => '*',
+    minute      => '0,10,20,30,40,50',
     hour        => '*',
     date        => '*',
     month       => '*',
     weekday     => '*',
     user        => 'root',
-    command     => '/usr/local/bin/duck',
+    command     => '/usr/local/bin/duck >/dev/null 2>&1',
     description => 'Update Duck DNS',
   }
 
