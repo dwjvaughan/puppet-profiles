@@ -1,0 +1,24 @@
+$TTL 86400
+@ IN SOA cf-dns-01.dwjv.net. root.dwjv.net. (
+    2014112511 ;Serial
+    3600 ;Refresh
+    1800 ;Retry
+    604800 ;Expire
+    86400 ;Minimum TTL
+)
+
+;Name Server Information
+@ IN NS primary.dwjv.net.
+
+;IP address of Name Server
+primary IN A 192.168.10.5
+
+;Mail exchanger
+dwjv.net. IN MX 10 mail.dwjv.net.
+
+;A – Record HostName To Ip Address
+cf-puppet-01 IN A 192.168.10.4
+mail IN A 192.168.1.120
+
+;CNAME record
+puppet IN CNAME cf-puppet-01.dwjv.net.

@@ -8,14 +8,13 @@ class profiles::dns {
   forwarders        => [ '8.8.8.8', '8.8.4.4' ],
   allow_query       => [ 'localnets' ],
   zones             => {
-    'dwjv.net'                => [
-      'type master',
-      'file "dwjv.net"',
-    ],
-    '10.168.192.in-addr.arpa' => [
-      'type master',
-      'file "10.168.192.in-addr.arpa"',
-    ],
-  },
-}
+      'dwjv.net'                => [
+        'type master',
+        'file "dwjv.net"',
+      ]
+    },
+  }
+  bind::server::file { 'dwjv.net':
+    source => 'puppet:///modules/puppet-profiles/dns/dwjv.net',
+  }
 }
