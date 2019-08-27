@@ -3,8 +3,8 @@
 class profiles::duck_dns {
 
   file { '/usr/local/bin/duck':
-    content => 'puppet:///modules/profiles/duck_dns/duck',
-    mode    => '0755'
+    source => 'puppet:///modules/profiles/duck_dns/duck',
+    mode   => '0755'
   }
 
 }
