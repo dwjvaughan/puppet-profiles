@@ -17,8 +17,13 @@ primary IN A 192.168.10.5
 dwjv.net. IN MX 10 mail.dwjv.net.
 
 ;A – Record HostName To Ip Address
+cf-gw-01 IN A 192.168.10.1
+stora IN A 192.168.10.2
+dave-pc IN A 192.168.10.3
 cf-puppet-01 IN A 192.168.10.4
-mail IN A 192.168.1.120
+cf-dns-01 IN A 192.168.10.5
 
 ;CNAME record
 puppet IN CNAME cf-puppet-01.dwjv.net.
+cf-stora-01 IN CNAME stora.dwjv.net.
+cf-esxi-01 IN CNAME dave-pc.dwjv.net.
