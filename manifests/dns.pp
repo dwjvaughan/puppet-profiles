@@ -15,6 +15,6 @@ class profiles::dns {
     },
   }
   bind::server::file { 'dwjv.net':
-    source => 'puppet:///modules/puppet-profiles/dns/dwjv.net',
+    source => 'puppet:///modules/profiles/dns/dwjv.net',
   }
 }
