@@ -1,0 +1,1 @@
+echo url="https://www.duckdns.org/update?domains=cf-puppet-01&token=e037327d-72c9-490e-817f-d9ad26976bb9&ip=" | curl -k -o ~/duckdns/duck.log -K -
