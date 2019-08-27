@@ -11,10 +11,8 @@ class profiles::base (
   create_resources(user, $managed_users_hash)
   create_resources(ssh_authorized_key, $managed_ssh_keys_hash)
 
-  if ($packages) {
-    package { $packages:
-      ensure   => 'installed',
-      provider => 'yum',
-    }
+  package { $packages:
+    ensure   => 'installed',
+    provider => 'yum',
   }
 }
