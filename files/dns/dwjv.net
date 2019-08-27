@@ -8,7 +8,7 @@ $TTL 86400
 )
 
 ;Name Server Information
-@ IN NS primary.dwjv.net.
+@ IN NS cf-dns-01.dwjv.net.
 
 ;IP address of Name Server
 primary IN A 192.168.10.5
