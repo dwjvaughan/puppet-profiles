@@ -22,6 +22,7 @@ stora IN A 192.168.10.2
 dave-pc IN A 192.168.10.3
 cf-puppet-01 IN A 192.168.10.4
 cf-dns-01 IN A 192.168.10.5
+cf-elk-01 IN A 192.168.10.6
 
 ;CNAME record
 puppet IN CNAME cf-puppet-01.dwjv.net.

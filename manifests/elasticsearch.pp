@@ -1,0 +1,5 @@
+# Elasticsearch
+
+class profiles::elasticsearch {
+
+}
