@@ -6,7 +6,8 @@ class profiles::base (
   $packages = [],
 )
 {
-  include 'puppet'
+  include puppet
+  include filebeat
 
   create_resources(user, $managed_users_hash)
   create_resources(ssh_authorized_key, $managed_ssh_keys_hash)
@@ -14,5 +15,12 @@ class profiles::base (
   package { $packages:
     ensure   => 'installed',
     provider => 'yum',
+  }
+
+  filebeat::input { 'messages':
+    paths    => [
+      '/var/log/messages',
+    ],
+    doc_type => 'messages',
   }
 }
