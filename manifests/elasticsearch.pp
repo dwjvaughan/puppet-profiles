@@ -12,5 +12,9 @@ class profiles::elasticsearch {
     protocol => 'tcp',
   }
 
-  elasticsearch::instance { $::hostname: }
+  elasticsearch::instance { $::hostname:
+    config => {
+      'network.host' => '0.0.0.0'
+    }
+  }
 }
