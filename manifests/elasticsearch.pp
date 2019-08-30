@@ -11,4 +11,6 @@ class profiles::elasticsearch {
     port     => 9200,
     protocol => 'tcp',
   }
+
+  elasticsearch::instance { $::hostname: }
 }
