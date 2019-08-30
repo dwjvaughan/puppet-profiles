@@ -17,7 +17,15 @@ class profiles::elasticsearch {
       'network.host' => '0.0.0.0'
     },
     jvm_options => [
-      '#PrintGCDateStamps'
+      '#PrintGCDetails',
+      '#PrintGCDateStamps',
+      '#PrintTenuringDistribution',
+      '#PrintGCApplicationStoppedTime',
+      '#Xloggc',
+      '#UseGCLogFileRotation',
+      '#NumberOfGCLogFiles',
+      '#GCLogFileSize',
+      '#XX:UseConcMarkSweepGC',
     ]
   }
 }
