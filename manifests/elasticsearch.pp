@@ -13,8 +13,11 @@ class profiles::elasticsearch {
   }
 
   elasticsearch::instance { $::hostname:
-    config => {
+    config      => {
       'network.host' => '0.0.0.0'
-    }
+    },
+    jvm_options => [
+      '#PrintGCDateStamps'
+    ]
   }
 }
