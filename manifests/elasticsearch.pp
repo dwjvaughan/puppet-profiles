@@ -3,7 +3,7 @@
 class profiles::elasticsearch {
   include elastic_stack::repo
   include elasticsearch
-  include ::filewalld
+  include filewalld
 
   firewalld_port { 'Open Elasticsearch port':
     ensure   => present,
