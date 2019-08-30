@@ -13,10 +13,9 @@ class profiles::elasticsearch {
   # }
 
   elasticsearch::instance { $::hostname:
-    # config      => {
-    #   'network.host'                 => '0.0.0.0',
-    #   'cluster.initial_master_nodes' => "${::hostname}-${::hostname}"
-    # },
+    config      => {
+      'xpack.monitoring.collection.enabled' => true
+    },
     jvm_options => [
       '#PrintGCDetails',
       '#PrintGCDateStamps',
