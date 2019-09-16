@@ -4,7 +4,7 @@ class profiles::docker {
 
   yumrepo { 'docker-ce':
     ensure   => 'present',
-    name     => 'Docker CE',
+    name     => 'Docker-CE',
     descr    => 'Docker CE El 7 - $basearch',
     baseurl  => 'https://download.docker.com/linux/centos/docker-ce.repo',
     enabled  => '1',
