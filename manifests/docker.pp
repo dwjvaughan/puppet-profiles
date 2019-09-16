@@ -2,27 +2,21 @@
 
 class profiles::docker {
 
-  yumrepo { 'docker-ce':
+  yumrepo { 'docker-ce-stable':
     ensure   => 'present',
-    name     => 'Docker-CE',
-    descr    => 'Docker CE El 7 - $basearch',
-    baseurl  => 'https://download.docker.com/linux/centos/docker-ce.repo',
+    name     => 'docker-ce-stable',
+    descr    => 'Docker CE Stable - $basearch',
+    baseurl  => 'https://download.docker.com/linux/centos/7/$basearch/stable',
     enabled  => '1',
-    gpgcheck => '0',
-    target   => '/etc/yum.repo.d/docker-ce.repo',
+    gpgcheck => '1',
+    gpgkey   => 'https://download.docker.com/linux/centos/gpg'
   }
 
   package { ['docker-ce', 'docker-ce-cli', 'containerd.io']:
     ensure  => 'installed',
-    require => Yumrepo['docker-ce'],
+    require => Yumrepo['docker-ce-stable'],
   }
 
-  # firewalld_port { 'Open Logstash port':
-  #   ensure   => present,
-  #   zone     => 'public',
-  #   port     => 5044,
-  #   protocol => 'tcp',
-  # }
 }
 
 
