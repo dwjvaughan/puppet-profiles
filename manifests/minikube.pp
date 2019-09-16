@@ -19,7 +19,7 @@ class profiles::minikube {
     require => Yumrepo['kubernetes'],
   }
 
-  $ports = hiera('firewalld::ports')
-  create_resources(firewalld_port, $ports, { ensure => 'present' })
+  # $ports = hiera('firewalld::ports')
+  # create_resources(firewalld_port, $ports, { ensure => 'present' })
 
 }
