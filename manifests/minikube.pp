@@ -19,10 +19,10 @@ class profiles::minikube {
     require => Yumrepo['kubernetes'],
   }
 
-  # firewalld_port { 'Open Logstash port':
-  #   ensure   => present,
-  #   zone     => 'public',
-  #   port     => 5044,
-  #   protocol => 'tcp',
-  # }
+  firewalld_port { 'Open K8s port':
+    ensure   => present,
+    zone     => 'public',
+    port     => 8443,
+    protocol => 'tcp',
+  }
 }
