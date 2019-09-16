@@ -19,10 +19,7 @@ class profiles::minikube {
     require => Yumrepo['kubernetes'],
   }
 
-  firewalld_port { 'Open K8s ports':
-    ensure   => present,
-    zone     => 'public',
-    port     => [8443, 443, 8080],
-    protocol => 'tcp',
-  }
+  $ports = hiera('firewalld::ports')
+  create_resources(firewalld_port, $ports, { ensure => 'present' })
+
 }
