@@ -19,10 +19,10 @@ class profiles::minikube {
     require => Yumrepo['kubernetes'],
   }
 
-  firewalld_port { 'Open K8s port':
+  firewalld_port { 'Open K8s ports':
     ensure   => present,
     zone     => 'public',
-    port     => 8443,
+    port     => [8443, 443, 8080],
     protocol => 'tcp',
   }
 }
