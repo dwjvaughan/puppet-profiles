@@ -27,6 +27,12 @@ class profiles::k8s_common {
   package { [ 'kubectl', 'kubeadm', 'docker' ]:
     ensure  => 'installed',
     require => Yumrepo['kubernetes'],
+  } -> service { 'docker':
+    ensure => 'running'
+  } -> service { 'kubelet':
+    ensure => running
   }
+
+
 
 }
