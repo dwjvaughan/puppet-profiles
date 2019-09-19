@@ -19,7 +19,7 @@ class profiles::k8s_common {
     command   => 'modprobe -b br_netfilter',
     logoutput => 'on_failure',
     unless    => 'test -d /proc/sys/net/bridge'
-  } -> sysctl { 'net.bridge-nf-call-iptables':
+  } -> sysctl { 'net.bridge.bridge-nf-call-iptables':
     ensure => present,
     value  => 1
   }
