@@ -28,9 +28,11 @@ class profiles::k8s_common {
     ensure  => 'installed',
     require => Yumrepo['kubernetes'],
   } -> service { 'docker':
-    ensure => 'running'
+    ensure => 'running',
+    enable => true
   } -> service { 'kubelet':
-    ensure => running
+    ensure => running,
+    enable => true
   }
 
 
