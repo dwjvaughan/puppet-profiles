@@ -2,6 +2,7 @@
 
 class profiles::k8s_common {
   include firewalld
+  include swap_file
 
   yumrepo { 'kubernetes':
     ensure   => 'present',
@@ -35,6 +36,8 @@ class profiles::k8s_common {
     enable => true
   }
 
-
+swap_file::files { 'default':
+  ensure   => absent,
+}
 
 }
