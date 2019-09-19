@@ -3,7 +3,7 @@
 class profiles::k8s_master {
   include firewalld
 
-  $k8s_firewall_ports = ['6443', '2379:2380', '10250:10252', '10255']
+  $k8s_firewall_ports = ['6443', '2379-2380', '10250-10252', '10255']
 
   $k8s_firewall_ports.each |String $port| {
     firewalld_port {"k8s_firewall_${port}":
