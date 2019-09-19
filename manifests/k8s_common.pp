@@ -14,19 +14,14 @@ class profiles::k8s_common {
     target   => '/etc/yum.repo.d/kubernetes.repo',
   }
 
-exec { 'load-bridge-netfilter':
+  exec { 'load-bridge-netfilter':
     path      => ['/sbin', '/usr/sbin', '/bin', '/usr/bin'],
     command   => 'modprobe -b br_netfilter',
     logoutput => 'on_failure',
-    unless    => 'test -d /proc/sys/net/bridge',
-  } -> file_line { '/etc/sysctl.conf bridge-nf-call-iptables':
-    path  => '/etc/sysctl.conf',
-    line  => 'net.bridge.bridge-nf-call-iptables=1',
-    match => 'net.bridge.bridge-nf-call-iptables\s*=',
-  } -> exec { 'sysctl_refresh':
-    path      => ['/usr/sbin', '/sbin', '/usr/bin', '/bin'],
-    command   => 'sysctl -p /etc/sysctl.conf',
-    logoutput => 'on_failure',
+    unless    => 'test -d /proc/sys/net/bridge'
+  } -> sysctl { 'net.bridge-nf-call-iptables':
+    ensure => present,
+    value  => 1
   }
 
   package { [ 'kubectl', 'kubeadm', 'docker' ]:
