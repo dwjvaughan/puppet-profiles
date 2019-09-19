@@ -14,8 +14,9 @@ class profiles::k8s_common {
     target   => '/etc/yum.repo.d/kubernetes.repo',
   }
 
-  sysctl::set { 'net.bridge.bridge-nf-call-iptables':
-    value => 1
+  sysctl { 'net.bridge.bridge-nf-call-iptables':
+    ensure => present,
+    value  => 1
   }
 
   package { [ 'kubectl', 'kubeadm', 'docker' ]:
