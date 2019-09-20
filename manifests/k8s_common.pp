@@ -2,7 +2,6 @@
 
 class profiles::k8s_common {
   include firewalld
-  include swap_file
 
   yumrepo { 'kubernetes':
     ensure   => 'present',
