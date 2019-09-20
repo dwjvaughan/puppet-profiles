@@ -44,4 +44,15 @@ class profiles::k8s_common {
     mode => 'disabled',
   }
 
+  $k8s_firewall_ports = ['8285', '8472']
+
+  $k8s_firewall_ports.each |String $port| {
+    firewalld_port {"k8s_firewall_${port}":
+      ensure   => present,
+      zone     => 'public',
+      port     => $port,
+      protocol => 'udp'
+    }
+  }
+
 }
