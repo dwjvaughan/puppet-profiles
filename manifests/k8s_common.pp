@@ -2,6 +2,7 @@
 
 class profiles::k8s_common {
   include firewalld
+  include selinux
 
   yumrepo { 'kubernetes':
     ensure   => 'present',
@@ -38,6 +39,10 @@ class profiles::k8s_common {
   exec { 'swapoff':
     path    => '/sbin',
     command => 'swapoff -a'
+  }
+
+  class { 'selinux':
+    mode => 'disabled',
   }
 
 }
