@@ -36,8 +36,9 @@ class profiles::k8s_common {
     enable => true
   }
 
-swap_file::files { 'default':
-  ensure   => absent,
-}
+  exec { 'swapoff':
+    path    => '/sbin',
+    command => 'swapoff -a'
+  }
 
 }
